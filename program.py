@@ -1,89 +1,75 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
 import fileinput
-
-# Se define la llave
-
-key = 'ENCRYPT'
-
-# Se lee la entrada
-
+#Se define la llave
+key='ENCRYPT'
+#Se lee la entrada
 lines = []
 for line in fileinput.input():
-    lines.append(line)
-
-# Se limpian las entradas
-
-choice = lines[0].replace('\n', '')
-text = lines[1].replace(' ', '')
-text = text.replace('\n', '')
-
-# Se define la Matriz
-
-alphabet = 'ABCDEFGHIKLMNOPQRSTUVWXYZ'
-matrix = Matriz(key, alphabet)
-
-# Para saber si se quiere cifrar o descifrara
-
-if choice == 'ENCRYPT':
-    print encrypt(matrix, text)
+	lines.append(line)
+#Se limpian las entradas
+choice = lines[0].replace("\n","")
+text = lines[1].replace(" ","")
+text = text.replace("\n","")
+#Se define la Matriz
+alphabet='ABCDEFGHIKLMNOPQRSTUVWXYZ';
+matrix = Matriz(key,alphabet)
+#Para saber si se quiere cifrar o descifrara
+if(choice=='ENCRYPT'):
+    print(encrypt(matrix,text))
 else:
-    print decrypt(matrix, text)
+    print(decrypt(matrix,text))
 
-
-def Matriz(key, alphabet):
+def Matriz(key,alphabet):
     matrix = []
-    order = ''
+    order=''
     for i in key:
         order += i
     for i in alphabet:
-        if i not in key:
+        if (i not in key):
             order += i
-    x = 0
-    for m in range(0, 5):
+    x=0
+    for m in range(0,5):
         matrix.append([])
-        for n in range(0, 5):
+        for n in range (0,5):
             matrix[m].append(order[x])
-            x += 1
+            x+=1
     return matrix
 
-
 def encrypt(matrix, word):
-    up = []
-    down = []
+    up=[]
+    down=[]
     for one in word:
-        for i in range(0, 5):
-            if one in matrix[i]:
+        for i in range(0,5):
+            if(one in matrix[i]):
                 break
 
-        Col = matrix[i].index(one)
+        Col=matrix[i].index(one)
         up.append(i)
         down.append(Col)
 
-    Array = up + down
-    encrypted = ''
-    for i in range(0, len(Array), 2):
-        encrypted += matrix[Array[i]][Array[i + 1]]
+
+    Array=up+down
+    encrypted=''
+    for i in range(0, len(Array),2):
+	    encrypted+=matrix[Array[i]][Array[i+1]]
     return encrypted
 
-
 def decrypt(matrix, word):
-    up = []
-    down = []
+    up=[]
+    down=[]
     for one in word:
-        for i in range(0, 5):
-            if one in matrix[i]:
+        for i in range(0,5):
+            if(one in matrix[i]):
                 break
 
-        Col = matrix[i].index(one)
+        Col=matrix[i].index(one)
         up.append(i)
         down.append(Col)
 
-    Array = []
+    Array=[]
     for i in range(len(up)):
         Array.append(up[i])
         Array.append(down[i])
-    decrypted = ''
-    for i in range(len(Array) // 2):
-        decrypted += matrix[Array[i]][Array[i + len(Array) // 2]]
+    decrypted=''
+    for i in range(len(Array)//2):
+	    decrypted+=matrix[Array[i]][Array[i+len(Array)//2]]
     return decrypted
