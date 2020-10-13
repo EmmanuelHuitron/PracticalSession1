@@ -44,9 +44,11 @@ def encrypt(matrix, word):
         for i in range(0,5):
             if(one in matrix[i]):
                 break
+        val=i
         Col=matrix[i].index(one)
-	    up.append(i)
+	    up.append(val)
 		down.append(Col)
+
     Array=up+down
     encrypted=''
     for i in range(0, len(Array),2):
@@ -59,8 +61,10 @@ def decrypt(matrix, word):
     	for i in range(0,5):
 	    	if(one in matrix[i]):
 		    	break
+        
+        val=i
 	    Col=matrix[i].index(one)
-	    up.append(i)
+	    up.append(val)
 	    down.append(Col)
     Array=[]
     for i in range(len(up)):
