@@ -32,7 +32,7 @@ def Matriz(key,alphabet):
     x=0
     for i in range(0,5):
         matrix.append([])
-        for j in range (0:5):
+        for j in range (0,5):
             matrix[j].append(order[x])
             x+=1
     return matrix
