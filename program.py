@@ -3,24 +3,22 @@ import fileinput
 
 def Matriz(key,alphabet):
     matrix = []
-    order=''
-    for i in key:
-        order += i
+    elements='ENCRYPT'
     for i in alphabet:
         if (i not in key):
-            order += i
+            elements += i
     x=0
     for m in range(0,5):
         matrix.append([])
         for n in range (0,5):
-            matrix[m].append(order[x])
+            matrix[m].append(elements[x])
             x+=1
     return matrix
 
-def encrypt(matrix, word):
+def encrypt(matrix, text):
     up=[]
     down=[]
-    for one in word:
+    for one in text:
         for i in range(0,5):
             if(one in matrix[i]):
                 break
@@ -36,18 +34,16 @@ def encrypt(matrix, word):
 	    encrypted+=matrix[Array[i]][Array[i+1]]
     return encrypted
 
-def decrypt(matrix, word):
+def decrypt(matrix, text):
     up=[]
     down=[]
-    for one in word:
+    for one in text:
         for i in range(0,5):
             if(one in matrix[i]):
                 break
-
         Col=matrix[i].index(one)
         up.append(i)
         down.append(Col)
-
     Array=[]
     for i in range(len(up)):
         Array.append(up[i])
