@@ -22,17 +22,21 @@ def main():
     print(final)
 
 def Matriz(key,alphabet):
-    matrix = {}
-    for i in range (0,5):
-        for j in range (0,5):
-            if len(key) > 0:
-                matrix[key[0]]="{}{}".format(i,j)
-                alphabet = alphabet.replace(key[0],"")
-                key = key[1:]
-            else:
-                matrix[alph[0]]="{}{}".format(i,j)
-                alphabet = alphabet[1:]
+    matrix = []
+    order=''
+    for i in key:
+        order+=i
+    for i in alphabet:
+        if (i not in key):
+            order+=1
+    x=0
+    for i in range(0,5):
+        matrix.append([])
+        for j in range (0:5):
+            matrix[j].append(order[x])
+            x+=1
     return matrix
+
 def encrypt(matrix, word):
     up=[]
     down=[]
@@ -67,7 +71,3 @@ def decrypt(matrix, word):
 	    decrypted+=matrix[Array[i]][Array[i+len(Array)//2]]
     return decrypted
 main()
-
-
-def crearCuadro(alph, key):
-    
