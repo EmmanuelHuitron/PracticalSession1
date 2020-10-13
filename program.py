@@ -1,22 +1,5 @@
 import fileinput
-#Se define la llave
-key='ENCRYPT'
-#Se lee la entrada
-lines = []
-for line in fileinput.input():
-	lines.append(line)
-#Se limpian las entradas
-choice = lines[0].replace("\n","")
-text = lines[1].replace(" ","")
-text = text.replace("\n","")
-#Se define la Matriz
-alphabet='ABCDEFGHIKLMNOPQRSTUVWXYZ';
-matrix = Matriz(key,alphabet)
-#Para saber si se quiere cifrar o descifrara
-if(choice=='ENCRYPT'):
-    print(encrypt(matrix,text))
-else:
-    print(decrypt(matrix,text))
+
 
 def Matriz(key,alphabet):
     matrix = []
@@ -73,3 +56,21 @@ def decrypt(matrix, word):
     for i in range(len(Array)//2):
 	    decrypted+=matrix[Array[i]][Array[i+len(Array)//2]]
     return decrypted
+#Se define la llave
+key='ENCRYPT'
+#Se lee la entrada
+lines = []
+for line in fileinput.input():
+	lines.append(line)
+#Se limpian las entradas
+choice = lines[0].replace("\n","")
+text = lines[1].replace(" ","")
+text = text.replace("\n","")
+#Se define la Matriz
+alphabet='ABCDEFGHIKLMNOPQRSTUVWXYZ';
+matrix = Matriz(key,alphabet)
+#Para saber si se quiere cifrar o descifrara
+if(choice=='ENCRYPT'):
+    print(encrypt(matrix,text))
+else:
+    print(decrypt(matrix,text))
