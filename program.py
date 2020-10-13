@@ -14,13 +14,11 @@ def main():
     alphabet='ABCDEFGHIKLMNOPQRSTUVWXYZ';
     matrix = Matriz(key,alphabet)
 
-    #Para saber si se quiere cifrar o descifrar
-    final='';
+    #Para saber si se quiere cifrar o descifrara
     if(choice=='ENCRYPT'):
-        final=encrypt(matrix,text)
+        print(encrypt(matrix,text))
     else:
-	    final=decrypt(matrix,text)
-    print(final)
+	    print(decrypt(matrix,text))
 
 def Matriz(key,alphabet):
     matrix = []
@@ -29,7 +27,7 @@ def Matriz(key,alphabet):
         order+=i
     for i in alphabet:
         if (i not in key):
-            order+=1
+            order+=i
     x=0
     for i in range(0,5):
         matrix.append([])
@@ -45,18 +43,18 @@ def encrypt(matrix, word):
         for i in range(0,5):
             if(one in matrix[i]):
                 break
-            
+
         Col=matrix[i].index(one)
         up.append(i)
         down.append(Col)
-        
+
 
     Array=up+down
     encrypted=''
     for i in range(0, len(Array),2):
 	    encrypted+=matrix[Array[i]][Array[i+1]]
     return encrypted
-    
+
 def decrypt(matrix, word):
     up=[]
     down=[]
@@ -64,11 +62,11 @@ def decrypt(matrix, word):
         for i in range(0,5):
             if(one in matrix[i]):
                 break
-            
+
         Col=matrix[i].index(one)
         up.append(i)
         down.append(Col)
-		
+
     Array=[]
     for i in range(len(up)):
         Array.append(up[i])
