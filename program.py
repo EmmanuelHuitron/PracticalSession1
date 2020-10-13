@@ -6,7 +6,6 @@ def main():
 	lines = []
 	for line in fileinput.input():
 		lines.append(line)
-		
 	#Se limpian las entradas
 	choice=lines[0].replace("\n","")
   	text = lines[1].replace(" ","") 
@@ -18,7 +17,7 @@ def main():
 	
 	#Para saber si se quiere cifrar o descifrar
 	final='';
-	if(option=='ENCRYPT'):
+	if(choice=='ENCRYPT'):
 		final=encrypt(matrix,text)
 	else:
 		final=decrypt(matrix,text)
