@@ -1,3 +1,4 @@
+import fileinput
 def main():
     #Se define la llave
     key='ENCRYPT'
@@ -44,32 +45,34 @@ def encrypt(matrix, word):
         for i in range(0,5):
             if(one in matrix[i]):
                 break
-        val=i
+            
         Col=matrix[i].index(one)
-	    up.append(val)
-		down.append(Col)
+        up.append(i)
+        down.append(Col)
+        
 
     Array=up+down
     encrypted=''
     for i in range(0, len(Array),2):
 	    encrypted+=matrix[Array[i]][Array[i+1]]
     return encrypted
+    
 def decrypt(matrix, word):
     up=[]
     down=[]
     for one in word:
-    	for i in range(0,5):
-	    	if(one in matrix[i]):
-		    	break
-        
-        val=i
-	    Col=matrix[i].index(one)
-	    up.append(val)
-	    down.append(Col)
+        for i in range(0,5):
+            if(one in matrix[i]):
+                break
+            
+        Col=matrix[i].index(one)
+        up.append(i)
+        down.append(Col)
+		
     Array=[]
     for i in range(len(up)):
-    	Array.append(up[i])
-	    Array.append(down[i])
+        Array.append(up[i])
+        Array.append(down[i])
     decrypted=''
     for i in range(len(Array)//2):
 	    decrypted+=matrix[Array[i]][Array[i+len(Array)//2]]
