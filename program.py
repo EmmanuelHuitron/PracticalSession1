@@ -7,7 +7,7 @@ def main():
 	for line in fileinput.input():
 		lines.append(line)
 	#Se limpian las entradas
-	choice=lines[0].replace("\n","")
+	choice = lines[0].replace("\n","")
   	text = lines[1].replace(" ","") 
   	text = text.replace("\n","")
 	
